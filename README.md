@@ -23,6 +23,14 @@ no framework, deploy anywhere that serves static files.
    are bundled). Swap in the approved product photography by replacing the
    `<svg>` placeholder in each `.vehicle-photo` block in `index.html` with an
    `<img>` tag pointing at the real image assets.
+5. **Brand identity** — the header uses Mahindra's public red/black identity
+   (`#e31837` red, black header bar, "Rise." tagline). This session's sandbox
+   blocks outbound requests to `mahindra.co.za` and other general sites, so
+   these values come from published brand-color references rather than the
+   live site's CSS or logo files. Before this goes out under the Mahindra
+   name, swap in the official logo SVG/PNG (replace the `.brand-mark` /
+   `.brand-tagline` text in `index.html`) and confirm the exact hex codes
+   against the dealership's brand kit.
 3. **Response collection** — by default, submitted answers are only saved to
    the visitor's own browser (`localStorage`, for testing). To actually
    collect responses, set `SUBMIT_ENDPOINT` at the top of `script.js` to a
