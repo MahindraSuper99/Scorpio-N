@@ -3,18 +3,84 @@
 // Leave blank to keep responses local-only (useful for testing).
 const SUBMIT_ENDPOINT = "";
 
+const TOTAL_STEPS = 3;
+
 const form = document.getElementById("survey-form");
+const stepChrome = document.getElementById("step-chrome");
+const screens = {
+  welcome: document.getElementById("screen-welcome"),
+  done: document.getElementById("screen-done"),
+};
+for (let i = 1; i <= TOTAL_STEPS; i++) {
+  screens[i] = document.getElementById(`screen-${i}`);
+}
+
 const designationSelect = document.getElementById("designation");
 const otherDesignationField = document.getElementById("otherDesignationField");
+const otherDesignationInput = document.getElementById("otherDesignation");
 const dealershipSelect = document.getElementById("dealership");
-const formError = document.getElementById("form-error");
-const thankYou = document.getElementById("thank-you");
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const CHECK_SVG = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 10 8 14 16 6"/></svg>';
+
+function renderStepper(activeStep) {
+  document.querySelectorAll(".step").forEach((el) => {
+    const n = Number(el.dataset.step);
+    const circle = el.querySelector(".step-circle");
+    el.classList.remove("active", "completed");
+    if (n < activeStep) {
+      el.classList.add("completed");
+      circle.innerHTML = CHECK_SVG;
+    } else {
+      circle.textContent = String(n);
+      if (n === activeStep) el.classList.add("active");
+    }
+  });
+  document.querySelectorAll(".step-bar").forEach((el) => {
+    const n = Number(el.dataset.bar);
+    el.classList.toggle("completed", activeStep > n);
+  });
+}
+
+function goToStep(target) {
+  screens.welcome.hidden = target !== "welcome";
+  screens.done.hidden = target !== "done";
+  form.hidden = target === "welcome" || target === "done";
+  stepChrome.hidden = target === "welcome" || target === "done";
+
+  for (let i = 1; i <= TOTAL_STEPS; i++) {
+    screens[i].hidden = target !== i;
+  }
+  if (typeof target === "number") {
+    renderStepper(target);
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+document.getElementById("start-btn").addEventListener("click", () => goToStep(1));
+
+document.querySelectorAll("[data-back]").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const step = Number(e.target.closest(".screen").dataset.stepScreen);
+    goToStep(step - 1 === 0 ? 1 : step - 1);
+  });
+});
+
+document.querySelectorAll("[data-next]").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const section = e.target.closest(".screen");
+    const step = Number(section.dataset.stepScreen);
+    if (!validateStep(section)) return;
+    goToStep(step + 1);
+  });
+});
 
 designationSelect.addEventListener("change", () => {
-  otherDesignationField.hidden = designationSelect.value !== "Other";
-  if (!otherDesignationField.hidden) {
-    document.getElementById("otherDesignation").focus();
-  }
+  const isOther = designationSelect.value === "Other";
+  otherDesignationField.hidden = !isOther;
+  otherDesignationInput.required = isOther;
+  if (isOther) otherDesignationInput.focus();
 });
 
 async function loadDealerList() {
@@ -36,6 +102,27 @@ async function loadDealerList() {
 }
 loadDealerList();
 
+function validateStep(section) {
+  const errorBox = section.querySelector(".form-error");
+  section.querySelectorAll(".field").forEach((f) => f.classList.remove("invalid"));
+
+  const fields = section.querySelectorAll("input, select");
+  let valid = true;
+  let firstInvalid = null;
+  fields.forEach((el) => {
+    if (!el.checkValidity()) {
+      valid = false;
+      if (!firstInvalid) firstInvalid = el;
+      const field = el.closest(".field");
+      if (field) field.classList.add("invalid");
+    }
+  });
+
+  if (errorBox) errorBox.hidden = valid;
+  if (!valid && firstInvalid) firstInvalid.focus();
+  return valid;
+}
+
 function queueLocalSubmission(data) {
   try {
     const key = "scorpioN_rhino_survey_submissions";
@@ -50,19 +137,8 @@ function queueLocalSubmission(data) {
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  document.querySelectorAll(".field").forEach((f) => f.classList.remove("invalid"));
-
-  if (!form.checkValidity()) {
-    document.querySelectorAll(":invalid").forEach((el) => {
-      const field = el.closest(".field");
-      if (field) field.classList.add("invalid");
-    });
-    formError.hidden = false;
-    const firstInvalid = form.querySelector(":invalid");
-    if (firstInvalid) firstInvalid.focus();
-    return;
-  }
-  formError.hidden = true;
+  const finalSection = document.getElementById("screen-3");
+  if (!validateStep(finalSection)) return;
 
   const formData = new FormData(form);
   const data = {
@@ -89,7 +165,7 @@ form.addEventListener("submit", async (event) => {
     }
   }
 
-  form.hidden = true;
-  thankYou.hidden = false;
-  thankYou.scrollIntoView({ behavior: "smooth" });
+  goToStep("done");
 });
+
+goToStep("welcome");

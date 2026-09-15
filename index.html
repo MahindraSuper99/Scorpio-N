@@ -3,36 +3,62 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
 <title>Scorpio-N Rhino Edition Survey</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="brand-strip" aria-hidden="true"></div>
+
+<div class="top-strip" aria-hidden="true"></div>
+
 <header class="site-header">
   <div class="header-inner">
-    <span class="brand-mark">mahindra</span>
-    <span class="brand-tagline">Rise</span>
-    <h1>Scorpio-N Rhino Edition &mdash; Dealer Survey</h1>
+    <div class="brand-lockup brand-lockup--header">
+      <svg class="brand-icon" viewBox="0 0 64 40" aria-hidden="true"><path d="M4 36 L26 4 L34 4 L14 36 Z"/><path d="M30 36 L52 4 L60 4 L40 36 Z"/></svg>
+      <span class="brand-word">mahindra</span>
+    </div>
   </div>
 </header>
 
 <main>
+
+  <section class="screen card card--hero" id="screen-welcome">
+    <div class="brand-lockup brand-lockup--hero">
+      <svg class="brand-icon" viewBox="0 0 64 40" aria-hidden="true"><path d="M4 36 L26 4 L34 4 L14 36 Z"/><path d="M30 36 L52 4 L60 4 L40 36 Z"/></svg>
+      <span class="brand-word">mahindra</span>
+    </div>
+    <h1 class="hero-title">Scorpio-N Rhino Edition &mdash; Dealer Survey</h1>
+    <p class="hero-subtitle">Help us shape the Rhino Edition. Takes about a minute.</p>
+    <button type="button" class="btn btn-primary btn-block" id="start-btn">Start Survey</button>
+  </section>
+
+  <div id="step-chrome" hidden>
+    <p class="step-label">Scorpio-N Rhino Edition Survey</p>
+    <ol class="stepper" aria-label="Survey progress">
+      <li class="step" data-step="1"><span class="step-circle">1</span></li>
+      <li class="step-bar" data-bar="1"></li>
+      <li class="step" data-step="2"><span class="step-circle">2</span></li>
+      <li class="step-bar" data-bar="2"></li>
+      <li class="step" data-step="3"><span class="step-circle">3</span></li>
+    </ol>
+  </div>
+
   <form id="survey-form" novalidate>
 
-    <section class="card" aria-labelledby="q-heading">
-      <p class="eyebrow">01 &mdash; About You</p>
-      <h2 id="q-heading">Survey Questions</h2>
+    <section class="screen card" id="screen-1" data-step-screen="1" hidden>
+      <h2>Survey Questions</h2>
+      <hr>
 
       <div class="field">
-        <label for="firstName">First Name <span class="req">*</span></label>
+        <label for="firstName" class="required">First Name</label>
         <input type="text" id="firstName" name="firstName" required autocomplete="given-name" placeholder="Enter your first name">
       </div>
 
       <div class="field">
-        <label for="designation">What is your designation? <span class="req">*</span></label>
+        <label for="designation" class="required">What is your designation?</label>
         <select id="designation" name="designation" required>
           <option value="" disabled selected>Select your designation</option>
           <option>Franchise Director</option>
@@ -47,21 +73,28 @@
       </div>
 
       <div class="field" id="otherDesignationField" hidden>
-        <label for="otherDesignation">Please specify your designation</label>
+        <label for="otherDesignation" class="required">Please specify your designation</label>
         <input type="text" id="otherDesignation" name="otherDesignation" placeholder="Your designation">
       </div>
 
       <div class="field">
-        <label for="dealership">Which dealership are you from? <span class="req">*</span></label>
+        <label for="dealership" class="required">Which dealership are you from?</label>
         <select id="dealership" name="dealership" required>
           <option value="" disabled selected>Loading dealer list&hellip;</option>
         </select>
       </div>
+
+      <div class="form-error" role="alert" hidden>Please answer all required questions before continuing.</div>
+
+      <div class="step-actions">
+        <span></span>
+        <button type="button" class="btn btn-primary" data-next>Next</button>
+      </div>
     </section>
 
-    <section class="card" aria-labelledby="bg-heading">
-      <p class="eyebrow">02 &mdash; Background</p>
-      <h2 id="bg-heading">Background</h2>
+    <section class="screen card" id="screen-2" data-step-screen="2" hidden>
+      <h2>Background</h2>
+      <hr>
 
       <div class="vehicle-block">
         <div class="vehicle-photo" aria-hidden="true">
@@ -104,39 +137,50 @@
           </ul>
         </div>
       </div>
+
+      <div class="step-actions">
+        <button type="button" class="btn btn-outline" data-back>Back</button>
+        <button type="button" class="btn btn-primary" data-next>Next</button>
+      </div>
     </section>
 
-    <section class="card" aria-labelledby="purchase-heading">
-      <p class="eyebrow">03 &mdash; Purchase Intent</p>
-      <h2 id="purchase-heading">4.1 Purchase Intent</h2>
+    <section class="screen card" id="screen-3" data-step-screen="3" hidden>
+      <h2>4.1 Purchase Intent</h2>
+      <hr>
 
       <div class="field radio-field">
-        <p class="radio-question">Will you purchase the Rhino Edition <strong>with the roof rack included</strong> at the above price (R699,899.00)? <span class="req">*</span></p>
-        <div class="radio-options" role="radiogroup" aria-required="true">
-          <label class="radio-pill"><input type="radio" name="purchaseWithRoofRack" value="Yes" required><span>Yes</span></label>
-          <label class="radio-pill"><input type="radio" name="purchaseWithRoofRack" value="No"><span>No</span></label>
+        <p class="radio-question required">Will you purchase the Rhino Edition <strong>with the roof rack included</strong> at the above price (R699,899.00)?</p>
+        <div class="toggle-group" role="radiogroup" aria-required="true">
+          <label class="toggle-btn"><input type="radio" name="purchaseWithRoofRack" value="Yes" required><span>Yes</span></label>
+          <label class="toggle-btn"><input type="radio" name="purchaseWithRoofRack" value="No"><span>No</span></label>
         </div>
       </div>
 
       <div class="field radio-field">
-        <p class="radio-question">Will you purchase the Rhino Edition <strong>without the roof rack</strong>, at the above price? <span class="req">*</span></p>
-        <div class="radio-options" role="radiogroup" aria-required="true">
-          <label class="radio-pill"><input type="radio" name="purchaseWithoutRoofRack" value="Yes" required><span>Yes</span></label>
-          <label class="radio-pill"><input type="radio" name="purchaseWithoutRoofRack" value="No"><span>No</span></label>
+        <p class="radio-question required">Will you purchase the Rhino Edition <strong>without the roof rack</strong>, at the above price?</p>
+        <div class="toggle-group" role="radiogroup" aria-required="true">
+          <label class="toggle-btn"><input type="radio" name="purchaseWithoutRoofRack" value="Yes" required><span>Yes</span></label>
+          <label class="toggle-btn"><input type="radio" name="purchaseWithoutRoofRack" value="No"><span>No</span></label>
         </div>
       </div>
+
+      <div class="form-error" role="alert" hidden>Please answer all required questions before submitting.</div>
+
+      <div class="step-actions">
+        <button type="button" class="btn btn-outline" data-back>Back</button>
+        <button type="submit" class="btn btn-primary">Submit Survey</button>
+      </div>
     </section>
-
-    <div id="form-error" class="form-error" role="alert" hidden>Please answer all required questions before submitting.</div>
-
-    <button type="submit" class="submit-btn">Submit Survey</button>
   </form>
 
-  <div id="thank-you" class="card thank-you" hidden role="status">
-    <h2>Thank you!</h2>
-    <p>Thank you for your feedback. Your input will help us shape the Scorpio-N Rhino Edition.</p>
-  </div>
+  <section class="screen card card--hero" id="screen-done" hidden role="status">
+    <h2 class="hero-title">Thank you!</h2>
+    <p class="hero-subtitle">Thank you for your feedback. Your input will help us shape the Scorpio-N Rhino Edition.</p>
+  </section>
+
 </main>
+
+<footer class="page-footer">&copy; <span id="year"></span> Mahindra South Africa. All rights reserved.</footer>
 
 <script src="script.js"></script>
 </body>
