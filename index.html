@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scorpio-N Rhino Edition Survey</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <span class="brand-mark">MAHINDRA</span>
+    <h1>Scorpio-N Rhino Edition &mdash; Dealer Survey</h1>
+  </div>
+</header>
+
+<main>
+  <form id="survey-form" novalidate>
+
+    <section class="card" aria-labelledby="q-heading">
+      <h2 id="q-heading">Survey Questions</h2>
+
+      <div class="field">
+        <label for="firstName">First Name <span class="req">*</span></label>
+        <input type="text" id="firstName" name="firstName" required autocomplete="given-name" placeholder="Enter your first name">
+      </div>
+
+      <div class="field">
+        <label for="designation">What is your designation? <span class="req">*</span></label>
+        <select id="designation" name="designation" required>
+          <option value="" disabled selected>Select your designation</option>
+          <option>Franchise Director</option>
+          <option>Owner</option>
+          <option>Dealer Principal</option>
+          <option>Marketing Manager</option>
+          <option>Sales Manager</option>
+          <option>Sales Executive</option>
+          <option>Fleet Sales Executive</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="field" id="otherDesignationField" hidden>
+        <label for="otherDesignation">Please specify your designation</label>
+        <input type="text" id="otherDesignation" name="otherDesignation" placeholder="Your designation">
+      </div>
+
+      <div class="field">
+        <label for="dealership">Which dealership are you from? <span class="req">*</span></label>
+        <select id="dealership" name="dealership" required>
+          <option value="" disabled selected>Loading dealer list&hellip;</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="bg-heading">
+      <h2 id="bg-heading">Background</h2>
+
+      <div class="vehicle-block">
+        <div class="vehicle-photo" aria-hidden="true">
+          <svg viewBox="0 0 120 70" role="img" aria-label="Scorpio-N standard illustration">
+            <rect x="4" y="30" width="112" height="26" rx="6"/>
+            <rect x="22" y="14" width="76" height="22" rx="8"/>
+            <circle cx="30" cy="58" r="9"/>
+            <circle cx="90" cy="58" r="9"/>
+          </svg>
+        </div>
+        <div class="vehicle-info">
+          <h3>Scorpio-N &mdash; Standard</h3>
+          <p class="model-name">STANDARD Scorpio&#8209;N Z8L 2.2D 6AT 4x4</p>
+          <p class="price">R629,899.00 <span>Recommended Retail Price, incl. VAT</span></p>
+        </div>
+      </div>
+
+      <div class="vehicle-block highlight">
+        <div class="vehicle-photo" aria-hidden="true">
+          <svg viewBox="0 0 120 70" role="img" aria-label="Scorpio-N Rhino Edition illustration">
+            <rect x="4" y="8" width="70" height="6" rx="2"/>
+            <rect x="4" y="30" width="112" height="26" rx="6"/>
+            <rect x="22" y="14" width="76" height="22" rx="8"/>
+            <circle cx="30" cy="58" r="10"/>
+            <circle cx="90" cy="58" r="10"/>
+            <rect x="2" y="52" width="16" height="6" rx="2"/>
+          </svg>
+          <span class="badge">RHINO</span>
+        </div>
+        <div class="vehicle-info">
+          <h3>Scorpio-N &mdash; Rhino Edition</h3>
+          <p class="model-name">RHINO EDITION Scorpio&#8209;N Z8L 2.2D 6AT 4x4</p>
+          <p class="price">R699,899.00 <span>Recommended Retail Price, excl. labour/fitment of accessories</span></p>
+          <ul class="feature-list">
+            <li>Roof Rack</li>
+            <li>Black Nudge with &ldquo;Rhino&rdquo; badging</li>
+            <li>Red Brake Callipers</li>
+            <li>Black Alloys &amp; 265/60 R80 All-Terrain Tyres</li>
+            <li>Tow Bar</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="purchase-heading">
+      <h2 id="purchase-heading">4.1 Purchase Intent</h2>
+
+      <div class="field radio-field">
+        <p class="radio-question">Will you purchase the Rhino Edition <strong>with the roof rack included</strong> at the above price (R699,899.00)? <span class="req">*</span></p>
+        <div class="radio-options" role="radiogroup" aria-required="true">
+          <label class="radio-pill"><input type="radio" name="purchaseWithRoofRack" value="Yes" required><span>Yes</span></label>
+          <label class="radio-pill"><input type="radio" name="purchaseWithRoofRack" value="No"><span>No</span></label>
+        </div>
+      </div>
+
+      <div class="field radio-field">
+        <p class="radio-question">Will you purchase the Rhino Edition <strong>without the roof rack</strong>, at the above price? <span class="req">*</span></p>
+        <div class="radio-options" role="radiogroup" aria-required="true">
+          <label class="radio-pill"><input type="radio" name="purchaseWithoutRoofRack" value="Yes" required><span>Yes</span></label>
+          <label class="radio-pill"><input type="radio" name="purchaseWithoutRoofRack" value="No"><span>No</span></label>
+        </div>
+      </div>
+    </section>
+
+    <div id="form-error" class="form-error" role="alert" hidden>Please answer all required questions before submitting.</div>
+
+    <button type="submit" class="submit-btn">Submit Survey</button>
+  </form>
+
+  <div id="thank-you" class="card thank-you" hidden role="status">
+    <h2>Thank you!</h2>
+    <p>Thank you for your feedback. Your input will help us shape the Scorpio-N Rhino Edition.</p>
+  </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
