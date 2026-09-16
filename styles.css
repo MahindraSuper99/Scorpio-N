@@ -61,21 +61,16 @@ button, a, input, textarea, select {
   align-items: flex-start;
   color: #fff;
 }
-.brand-lockup--header .brand-icon { width: 40px; height: 26px; }
+.brand-lockup--header .brand-icon { width: 44px; height: auto; }
 .brand-lockup--header .brand-word { font-size: 11px; }
-.brand-lockup--header .wing { fill: #fff; }
 
 .brand-lockup--hero {
   align-items: center;
   color: var(--muted);
   margin-bottom: 12px;
 }
-.brand-lockup--hero .brand-icon { width: 76px; height: 50px; }
+.brand-lockup--hero .brand-icon { width: 88px; height: auto; }
 .brand-lockup--hero .brand-word { font-size: 15px; }
-
-.wing-right { fill: url(#wingGradR); }
-.wing-left { fill: url(#wingGradL); }
-.crease { stroke: #4a4238; stroke-width: 0.6; stroke-linecap: round; opacity: 0.5; }
 
 .brand-word {
   font-weight: 600;

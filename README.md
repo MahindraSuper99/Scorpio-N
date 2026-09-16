@@ -29,15 +29,13 @@ Feedback) → Thank you**, with a progress stepper shown on steps 1–2.
    defined in the `ACCESSORIES` array at the top of `script.js`. Update
    prices there if they change; the per-item table, the "full set" reference
    total, and the live selection subtotal all derive from that one array.
-3. **Logo asset** — the header/hero use a hand-drawn SVG approximation of the
-   "twin-wing" mark (`.brand-icon` in `index.html`, 4 faceted `<path>`
-   elements styled in `styles.css` under `.facet-light`/`.facet-dark`) built
-   by eye from a reference image, since attempts to upload the real logo file
-   didn't attach (only arrived as inline content, no file this session could
-   read from disk). It's a reasonable stand-in, not a trace of the real
-   asset — swap in the actual Mahindra PNG/SVG file by replacing the `<svg
-   class="brand-icon">` block in both places in `index.html` with an `<img>`
-   tag once the file can be uploaded.
+3. **Logo asset — done.** `mahindra-icon.png` is the real "twin-wing" mark,
+   cropped from the supplied `mahindra-logo-source.jpg` (wordmark cropped
+   out, white background made transparent so it sits cleanly on both the red
+   header and white cards). Referenced via `<img class="brand-icon">` in
+   `index.html`. If a cleaner source file (vector/higher-res, or an
+   official light/dark variant) becomes available, drop it in and update the
+   `src` — no other changes needed.
 4. **Response collection** — by default, submitted answers are only saved to
    the visitor's own browser (`localStorage`, for testing). To actually
    collect responses, set `SUBMIT_ENDPOINT` at the top of `script.js` to a
@@ -95,7 +93,7 @@ reuses the toggle-button treatment as a 5-column, 2-row grid.
 **The POPIA privacy notice wording is placeholder copy** written to match
 the reference's tone and structure (what's collected / how it's used) for
 this survey's actual content — it is not legally reviewed. Have your
-compliance/legal team check it before this goes live, same as the logo.
+compliance/legal team check it before this goes live.
 
 ## Survey flow (per scope)
 
