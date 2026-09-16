@@ -319,8 +319,8 @@ input:focus, select:focus, textarea:focus {
 
 .scale-group {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
 }
 
 .toggle-btn {
@@ -328,9 +328,9 @@ input:focus, select:focus, textarea:focus {
   text-align: center;
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 12px 8px;
+  padding: 10px 2px;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 12px;
   color: var(--ink);
   cursor: pointer;
   position: relative;
@@ -346,14 +346,29 @@ input:focus, select:focus, textarea:focus {
   cursor: pointer;
 }
 .toggle-btn:has(input:checked) {
-  background: var(--brand-red);
-  border-color: var(--brand-red);
   color: #fff;
   box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--ink);
-  transform: scale(1.03);
+  transform: scale(1.08);
+}
+.toggle-btn--low:has(input:checked) {
+  background: #dc2626;
+  border-color: #dc2626;
+}
+.toggle-btn--mid:has(input:checked) {
+  background: #f59e0b;
+  border-color: #f59e0b;
+}
+.toggle-btn--high:has(input:checked) {
+  background: #16a34a;
+  border-color: #16a34a;
 }
 .toggle-btn:has(input:focus-visible) {
   box-shadow: 0 0 0 3px rgba(227, 24, 55, 0.25);
+}
+
+@media (max-width: 380px) {
+  .scale-group { gap: 3px; }
+  .toggle-btn { padding: 8px 0; font-size: 11px; }
 }
 
 .form-error {
