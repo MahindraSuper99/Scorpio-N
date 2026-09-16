@@ -179,8 +179,9 @@ function renderScaleGroup() {
   const group = document.getElementById("scale-group");
   group.innerHTML = "";
   for (let i = 1; i <= 10; i++) {
+    const tier = i <= 3 ? "low" : i <= 7 ? "mid" : "high";
     const label = document.createElement("label");
-    label.className = "toggle-btn";
+    label.className = `toggle-btn toggle-btn--${tier}`;
     label.innerHTML = `<input type="radio" name="stockConsideration" value="${i}"${i === 1 ? " required" : ""}><span>${i}</span>`;
     group.appendChild(label);
   }
