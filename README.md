@@ -118,3 +118,4 @@ with/without the roof rack" questions — the new accessory checklist and
 1–10 scale supersede that (a fixed roof-rack bundle doesn't fit an a-la-carte
 accessory list). If that comparison should still appear somewhere in the
 flow, let me know and I'll add it back as a read-only step.
+<!-- main branch tracking for Vercel production deploys -->
