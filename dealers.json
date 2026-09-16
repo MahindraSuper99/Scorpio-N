@@ -104,10 +104,6 @@
     "Mahindra Springbok",
     "Mahindra Upington"
   ],
-  "SADC": [
-    "Mahindra Zambia",
-    "Mahindra Zimbabwe Croco"
-  ],
   "Swaziland": [
     "Mahindra Swaziland"
   ],
@@ -128,7 +124,11 @@
     "Mahindra Vredenburg",
     "Mahindra Worcester"
   ],
+  "Zambia": [
+    "Mahindra Zambia"
+  ],
   "Zimbabwe": [
-    "Mahindra Zimbabwe"
+    "Mahindra Zimbabwe",
+    "Mahindra Zimbabwe Croco"
   ]
 }
