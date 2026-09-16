@@ -176,9 +176,10 @@ main {
   margin-bottom: 6px;
   color: var(--muted);
 }
-label.required, p.required { color: var(--brand-red); }
+label.required { color: var(--brand-red); }
+.field-hint { margin: -2px 0 10px; font-size: 12px; color: var(--muted); }
 
-input[type="text"], select {
+input[type="text"], select, textarea {
   width: 100%;
   padding: 12px 12px;
   font-size: 16px;
@@ -188,6 +189,7 @@ input[type="text"], select {
   color: var(--ink);
   appearance: none;
 }
+textarea { resize: vertical; font-family: inherit; }
 select {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23555'><path d='M5.5 7.5l4.5 5 4.5-5z'/></svg>");
   background-repeat: no-repeat;
@@ -195,52 +197,57 @@ select {
   background-size: 18px;
   padding-right: 34px;
 }
-input::placeholder { color: #9ca3af; }
-input:focus, select:focus {
+select:disabled { background-color: #f3f4f6; color: var(--muted); }
+input::placeholder, textarea::placeholder { color: #9ca3af; }
+input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--brand-red);
   box-shadow: 0 0 0 3px rgba(227, 24, 55, 0.15);
 }
-.field.invalid input, .field.invalid select { border-color: var(--brand-red); }
+.field.invalid input, .field.invalid select, .field.invalid textarea { border-color: var(--brand-red); }
 
-.vehicle-block {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  padding: 14px 0;
+.table-wrap { overflow-x: auto; margin-bottom: 12px; }
+.accessory-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.accessory-table th, .accessory-table td {
+  padding: 8px 6px;
+  text-align: left;
   border-bottom: 1px solid var(--border-light);
+  vertical-align: middle;
 }
-.vehicle-block:last-child { border-bottom: none; padding-bottom: 0; }
-
-.vehicle-photo {
-  flex: 0 0 96px;
-  width: 96px;
-  height: 60px;
-  position: relative;
-}
-.vehicle-photo svg { width: 100%; height: 100%; fill: #3a3a3a; }
-.vehicle-block.highlight .vehicle-photo svg { fill: #2e3d29; }
-.vehicle-photo .badge {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  background: var(--brand-red);
-  color: #fff;
-  font-size: 9px;
-  font-weight: 700;
-  padding: 2px 6px;
-  border-radius: 999px;
+.accessory-table th { font-size: 11px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.accessory-table td:last-child, .accessory-table th:last-child { text-align: right; white-space: nowrap; }
+.accessory-table td:first-child { width: 32px; }
+.accessory-table tfoot td { border-bottom: none; border-top: 2px solid var(--ink); font-weight: 700; padding-top: 10px; }
+.accessory-table input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--brand-red);
+  cursor: pointer;
 }
 
-.vehicle-info h3 { margin: 0 0 2px; font-size: 15px; font-weight: 700; }
-.vehicle-info .model-name { margin: 0 0 6px; font-size: 13px; color: var(--muted); }
-.vehicle-info .price { margin: 0 0 6px; font-size: 17px; font-weight: 700; color: var(--brand-red); }
-.vehicle-info .price span { display: block; font-size: 11px; font-weight: 400; color: var(--muted); }
-.feature-list { margin: 6px 0 0; padding-left: 18px; font-size: 13px; }
-.feature-list li { margin-bottom: 2px; }
+.selection-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: #fdecec;
+  border: 1px solid var(--brand-red);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: var(--ink);
+}
+.selection-summary strong { color: var(--brand-red-hover); }
 
-.radio-field .radio-question { font-weight: 600; font-size: 14px; margin: 0 0 10px; color: var(--ink); }
-.toggle-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.scale-group {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
 .toggle-btn {
   min-width: 0;
   text-align: center;
@@ -253,6 +260,7 @@ input:focus, select:focus {
   cursor: pointer;
   position: relative;
   transition: transform 0.1s ease;
+  background: #fff;
 }
 .toggle-btn span { display: block; overflow-wrap: break-word; }
 .toggle-btn input {

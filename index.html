@@ -41,8 +41,6 @@
       <li class="step" data-step="1"><span class="step-circle">1</span></li>
       <li class="step-bar" data-bar="1"></li>
       <li class="step" data-step="2"><span class="step-circle">2</span></li>
-      <li class="step-bar" data-bar="2"></li>
-      <li class="step" data-step="3"><span class="step-circle">3</span></li>
     </ol>
   </div>
 
@@ -53,8 +51,8 @@
       <hr>
 
       <div class="field">
-        <label for="firstName" class="required">First Name</label>
-        <input type="text" id="firstName" name="firstName" required autocomplete="given-name" placeholder="Enter your first name">
+        <label for="fullName" class="required">First Name and Surname</label>
+        <input type="text" id="fullName" name="fullName" required autocomplete="name" placeholder="Enter your first name and surname">
       </div>
 
       <div class="field">
@@ -78,9 +76,16 @@
       </div>
 
       <div class="field">
-        <label for="dealership" class="required">Which dealership are you from?</label>
-        <select id="dealership" name="dealership" required>
-          <option value="" disabled selected>Loading dealer list&hellip;</option>
+        <label for="province" class="required">Which dealership are you from? &mdash; Province</label>
+        <select id="province" name="province" required>
+          <option value="" disabled selected>Select your province</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="dealership" class="required">Dealership</label>
+        <select id="dealership" name="dealership" required disabled>
+          <option value="" disabled selected>Select a province first</option>
         </select>
       </div>
 
@@ -93,75 +98,48 @@
     </section>
 
     <section class="screen card" id="screen-2" data-step-screen="2" hidden>
-      <h2>Background</h2>
+      <h2>Accessories &amp; Feedback</h2>
       <hr>
 
-      <div class="vehicle-block">
-        <div class="vehicle-photo" aria-hidden="true">
-          <svg viewBox="0 0 120 70" role="img" aria-label="Scorpio-N standard illustration">
-            <rect x="4" y="30" width="112" height="26" rx="6"/>
-            <rect x="22" y="14" width="76" height="22" rx="8"/>
-            <circle cx="30" cy="58" r="9"/>
-            <circle cx="90" cy="58" r="9"/>
-          </svg>
+      <div class="field">
+        <label class="required">4. Please select from the accessory list below what you would like to have fitted on the Scorpio-N Rhino Edition</label>
+        <p class="field-hint">Prices shown are excluding VAT.</p>
+
+        <div class="table-wrap">
+          <table class="accessory-table" id="accessory-table">
+            <thead>
+              <tr><th></th><th>Item</th><th>Price (excl. VAT)</th></tr>
+            </thead>
+            <tbody id="accessory-rows"></tbody>
+            <tfoot>
+              <tr>
+                <td></td>
+                <td>Total (full set, incl. 15% VAT)</td>
+                <td id="accessory-full-total"></td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
-        <div class="vehicle-info">
-          <h3>Scorpio-N &mdash; Standard</h3>
-          <p class="model-name">STANDARD Scorpio&#8209;N Z8L 2.2D 6AT 4x4</p>
-          <p class="price">R629,899.00 <span>Recommended Retail Price, incl. VAT</span></p>
+
+        <div class="selection-summary" id="selection-summary">
+          <span>Your selection: <strong id="selection-count">0</strong> item(s)</span>
+          <span>Subtotal (excl. VAT): <strong id="selection-subtotal">R0</strong></span>
+          <span>Total (incl. 15% VAT): <strong id="selection-total-vat">R0</strong></span>
         </div>
       </div>
 
-      <div class="vehicle-block highlight">
-        <div class="vehicle-photo" aria-hidden="true">
-          <svg viewBox="0 0 120 70" role="img" aria-label="Scorpio-N Rhino Edition illustration">
-            <rect x="4" y="8" width="70" height="6" rx="2"/>
-            <rect x="4" y="30" width="112" height="26" rx="6"/>
-            <rect x="22" y="14" width="76" height="22" rx="8"/>
-            <circle cx="30" cy="58" r="10"/>
-            <circle cx="90" cy="58" r="10"/>
-            <rect x="2" y="52" width="16" height="6" rx="2"/>
-          </svg>
-          <span class="badge">RHINO</span>
-        </div>
-        <div class="vehicle-info">
-          <h3>Scorpio-N &mdash; Rhino Edition</h3>
-          <p class="model-name">RHINO EDITION Scorpio&#8209;N Z8L 2.2D 6AT 4x4</p>
-          <p class="price">R699,899.00 <span>Recommended Retail Price, excl. labour/fitment of accessories</span></p>
-          <ul class="feature-list">
-            <li>Roof Rack</li>
-            <li>Black Nudge with &ldquo;Rhino&rdquo; badging</li>
-            <li>Red Brake Callipers</li>
-            <li>Black Alloys &amp; 265/60 R80 All-Terrain Tyres</li>
-            <li>Tow Bar</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="step-actions">
-        <button type="button" class="btn btn-outline" data-back>Back</button>
-        <button type="button" class="btn btn-primary" data-next>Next</button>
-      </div>
-    </section>
-
-    <section class="screen card" id="screen-3" data-step-screen="3" hidden>
-      <h2>4.1 Purchase Intent</h2>
       <hr>
 
-      <div class="field radio-field">
-        <p class="radio-question required">Will you purchase the Rhino Edition <strong>with the roof rack included</strong> at the above price (R699,899.00)?</p>
-        <div class="toggle-group" role="radiogroup" aria-required="true">
-          <label class="toggle-btn"><input type="radio" name="purchaseWithRoofRack" value="Yes" required><span>Yes</span></label>
-          <label class="toggle-btn"><input type="radio" name="purchaseWithRoofRack" value="No"><span>No</span></label>
-        </div>
+      <div class="field">
+        <label class="required">5. On a scale of 1 to 10, how strongly would you consider adding the Scorpio-N Rhino to your dealership stock?</label>
+        <div class="scale-group" role="radiogroup" aria-required="true" id="scale-group"></div>
       </div>
 
-      <div class="field radio-field">
-        <p class="radio-question required">Will you purchase the Rhino Edition <strong>without the roof rack</strong>, at the above price?</p>
-        <div class="toggle-group" role="radiogroup" aria-required="true">
-          <label class="toggle-btn"><input type="radio" name="purchaseWithoutRoofRack" value="Yes" required><span>Yes</span></label>
-          <label class="toggle-btn"><input type="radio" name="purchaseWithoutRoofRack" value="No"><span>No</span></label>
-        </div>
+      <hr>
+
+      <div class="field">
+        <label for="comments">6. Additional comments</label>
+        <textarea id="comments" name="comments" rows="4" placeholder="Anything else you'd like to share? (optional)"></textarea>
       </div>
 
       <div class="form-error" role="alert" hidden>Please answer all required questions before submitting.</div>

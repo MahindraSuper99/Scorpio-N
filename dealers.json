@@ -1,5 +1,11 @@
-[
-  "REPLACE ME - Dealer 1",
-  "REPLACE ME - Dealer 2",
-  "REPLACE ME - Dealer 3"
-]
+{
+  "Eastern Cape": ["REPLACE ME - Dealer 1", "REPLACE ME - Dealer 2"],
+  "Free State": ["REPLACE ME - Dealer 1"],
+  "Gauteng": ["REPLACE ME - Dealer 1", "REPLACE ME - Dealer 2"],
+  "KwaZulu-Natal": ["REPLACE ME - Dealer 1", "REPLACE ME - Dealer 2"],
+  "Limpopo": ["REPLACE ME - Dealer 1"],
+  "Mpumalanga": ["REPLACE ME - Dealer 1"],
+  "North West": ["REPLACE ME - Dealer 1"],
+  "Northern Cape": ["REPLACE ME - Dealer 1"],
+  "Western Cape": ["REPLACE ME - Dealer 1", "REPLACE ME - Dealer 2"]
+}

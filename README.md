@@ -1,32 +1,35 @@
 # Scorpio-N Rhino Edition — Dealer Survey
 
 A short, mobile-first, multi-step survey for dealers, built to be reached via
-QR code and completed in under a minute on a phone. Plain HTML/CSS/JS — no
-build step, no framework, deploy anywhere that serves static files.
+QR code and completed in a couple of minutes on a phone. Plain HTML/CSS/JS —
+no build step, no framework, deploy anywhere that serves static files.
 
-Screen flow: **Welcome → Step 1 (About You) → Step 2 (Background) → Step 3
-(Purchase Intent) → Thank you**, with a progress stepper shown on steps 1–3.
+Screen flow: **Welcome → Step 1 (Survey Questions) → Step 2 (Accessories &
+Feedback) → Thank you**, with a progress stepper shown on steps 1–2.
 
 ## Files
 
 - `index.html` — the survey markup (all screens)
 - `styles.css` — styling, following the Mahindra Survey CI spec supplied for
-  this project (colors, Manrope typeface, stepper/button/card treatments)
-- `script.js` — step navigation, dealer list loading, validation, submit
-- `dealers.json` — the dealership dropdown options
+  this project (colors, Manrope typeface, stepper/button/card/table
+  treatments)
+- `script.js` — step navigation, province→dealership cascading, the
+  accessory list and live price totals, validation, submit
+- `dealers.json` — dealership options, grouped by province
 
 ## Before going live
 
 1. **Dealer list** — replace the placeholder entries in `dealers.json` with
-   the current full dealer list, one name per array entry:
+   the current full dealer list, grouped by province:
    ```json
-   ["Dealer One", "Dealer Two", "Dealer Three"]
+   { "Gauteng": ["Dealer One", "Dealer Two"], "Western Cape": ["Dealer Three"] }
    ```
-2. **Vehicle photos** — the Background step currently uses simple line-art
-   placeholders for the Standard and Rhino Edition vehicles (no stock photos
-   are bundled). Swap in the approved product photography by replacing the
-   `<svg>` placeholder in each `.vehicle-photo` block in `index.html` with an
-   `<img>` tag pointing at the real image assets.
+   The province dropdown is generated from this file's keys, so add/remove
+   provinces there too if needed.
+2. **Accessory prices** — the 12 accessories and their ex-VAT prices are
+   defined in the `ACCESSORIES` array at the top of `script.js`. Update
+   prices there if they change; the per-item table, the "full set" reference
+   total, and the live selection subtotal all derive from that one array.
 3. **Logo asset** — the header/hero currently use a hand-drawn approximation
    of the "twin-wing" mark (inline SVG in `index.html`, `.brand-icon`/
    `.brand-word`) since no logo file was supplied. Swap it for the real
@@ -38,12 +41,16 @@ Screen flow: **Welcome → Step 1 (About You) → Step 2 (Background) → Step 3
    a Google Sheet is the simplest option). Each submission POSTs:
    ```json
    {
-     "firstName": "...",
+     "fullName": "...",
      "designation": "...",
      "otherDesignation": "...",
+     "province": "...",
      "dealership": "...",
-     "purchaseWithRoofRack": "Yes|No",
-     "purchaseWithoutRoofRack": "Yes|No",
+     "selectedAccessories": ["Heavy-Duty Roof Rack", "..."],
+     "accessorySubtotalExclVat": 36900,
+     "accessoryTotalInclVat": 42435,
+     "stockConsideration": "8",
+     "comments": "...",
      "submittedAt": "ISO timestamp"
    }
    ```
@@ -51,31 +58,48 @@ Screen flow: **Welcome → Step 1 (About You) → Step 2 (Background) → Step 3
    web server) and generate a QR code pointing at the deployed URL with any
    QR generator.
 
+## Pricing note
+
+The source accessory price sheet lists 12 items excluding VAT, summing to
+R147,900, alongside a "Total" of R170,085 — that's the same figure at 15%
+VAT (147,900 × 1.15 = 170,085 exactly), not a separate/incorrect number. The
+table's footer row is labelled "Total (full set, incl. 15% VAT)" to make
+that explicit, and it's computed from the item prices rather than
+hardcoded, so it stays correct if prices change. The live "Your selection"
+box below the table applies the same excl./incl. VAT split to whatever the
+dealer actually checks.
+
 ## CI notes
 
 Styling follows the "Mahindra Survey CI" spec supplied for this project:
-brand red `#e31837` (buttons, header, stepper, mandatory-field labels),
-`#1a1a1a` ink text, `gray-100` page background, white cards, Manrope
-typeface, and the documented component patterns (rounded-2xl cards,
-rounded-xl buttons, ring+scale on selected toggle buttons, black top strip,
-`color-scheme: light` forced to prevent Android auto-dark-mode inversion).
-The two purchase-intent questions use a plain Yes/No toggle rather than the
-spec's 5-point Excellent→Unacceptable rating scale, since they're binary
-questions, not satisfaction ratings — the same selected/unselected button
-treatment applies either way.
+brand red `#e31837` (buttons, header, stepper, mandatory-field labels,
+checked checkboxes), `#1a1a1a` ink text, `gray-100` page background, white
+cards, Manrope typeface, and the documented component patterns (rounded-2xl
+cards, rounded-xl buttons, ring+scale on selected toggle buttons, black top
+strip, `color-scheme: light` forced to prevent Android auto-dark-mode
+inversion). The 1–10 stock-consideration question reuses the same
+selected/unselected toggle-button treatment as a 5-column, 2-row grid.
 
 ## Survey flow (per scope)
 
-1. First Name (free text, required)
+1. First Name and Surname (free text, required)
 2. Designation (dropdown, required): Franchise Director, Owner, Dealer
    Principal, Marketing Manager, Sales Manager, Sales Executive, Fleet Sales
    Executive, Other (free-text follow-up, required when "Other" is chosen)
-3. Dealership (dropdown, required, sourced from `dealers.json`)
-4. Background: RRP for the Standard Scorpio-N Z8L 2.2D 6AT 4x4
-   (R629,899.00) and the Rhino Edition (R699,899.00, excl. labour/fitment),
-   with its accessory list (roof rack, black "Rhino" nudge, red brake
-   callipers, black alloys & all-terrain tyres, tow bar)
-5. Two required Yes/No questions on purchase intent, with and without the
-   roof rack
-6. Submit → validation → thank-you screen: "Thank you for your feedback.
+3. Which dealership are you from? — Province (dropdown, required), then
+   Dealership (dropdown, required, filtered to that province)
+4. Accessory list — 12 items with ex-VAT prices, dealer selects any number
+   via checkboxes; live subtotal (excl. VAT) and total (incl. 15% VAT)
+   update as they select
+5. On a scale of 1–10, how strongly would you consider adding the Scorpio-N
+   Rhino to your dealership stock? (required)
+6. Open additional comments (optional)
+7. Submit → validation → thank-you screen: "Thank you for your feedback.
    Your input will help us shape the Scorpio-N Rhino Edition."
+
+Note: this replaces the earlier version of the scope, which showed a
+Standard/Rhino Edition price comparison and two Yes/No "will you purchase
+with/without the roof rack" questions — the new accessory checklist and
+1–10 scale supersede that (a fixed roof-rack bundle doesn't fit an a-la-carte
+accessory list). If that comparison should still appear somewhere in the
+flow, let me know and I'll add it back as a read-only step.
