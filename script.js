@@ -40,6 +40,13 @@ const dealershipSelect = document.getElementById("dealership");
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
+const now = new Date();
+const datePart = now.toLocaleDateString("en-ZA", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+const timePart = now.toLocaleTimeString("en-ZA", { hour: "2-digit", minute: "2-digit", hour12: false });
+document.getElementById("datetime-pill").textContent = `${datePart} at ${timePart}`;
+
+const stepFootnote = document.getElementById("step-footnote");
+
 function formatRand(n) {
   return "R" + Math.round(n).toLocaleString("en-US");
 }
@@ -70,6 +77,7 @@ function goToStep(target) {
   screens.done.hidden = target !== "done";
   form.hidden = target === "welcome" || target === "done";
   stepChrome.hidden = target === "welcome" || target === "done";
+  stepFootnote.hidden = target === "welcome" || target === "done";
 
   for (let i = 1; i <= TOTAL_STEPS; i++) {
     screens[i].hidden = target !== i;

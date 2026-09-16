@@ -17,7 +17,7 @@
 <header class="site-header">
   <div class="header-inner">
     <div class="brand-lockup brand-lockup--header">
-      <svg class="brand-icon" viewBox="0 0 64 40" aria-hidden="true"><path d="M4 36 L26 4 L34 4 L14 36 Z"/><path d="M30 36 L52 4 L60 4 L40 36 Z"/></svg>
+      <svg class="brand-icon" viewBox="0 0 64 48" aria-hidden="true"><path d="M28,4 C20,4 10,10 6,20 C4,26 6,32 12,36 C18,40 24,40 28,36 C24,30 22,22 24,14 C25,10 26,6 28,4 Z"/><path d="M36,4 C44,4 54,10 58,20 C60,26 58,32 52,36 C46,40 40,40 36,36 C40,30 42,22 40,14 C39,10 38,6 36,4 Z"/></svg>
       <span class="brand-word">mahindra</span>
     </div>
   </div>
@@ -27,11 +27,38 @@
 
   <section class="screen card card--hero" id="screen-welcome">
     <div class="brand-lockup brand-lockup--hero">
-      <svg class="brand-icon" viewBox="0 0 64 40" aria-hidden="true"><path d="M4 36 L26 4 L34 4 L14 36 Z"/><path d="M30 36 L52 4 L60 4 L40 36 Z"/></svg>
+      <svg class="brand-icon" viewBox="0 0 64 48" aria-hidden="true"><path d="M28,4 C20,4 10,10 6,20 C4,26 6,32 12,36 C18,40 24,40 28,36 C24,30 22,22 24,14 C25,10 26,6 28,4 Z"/><path d="M36,4 C44,4 54,10 58,20 C60,26 58,32 52,36 C46,40 40,40 36,36 C40,30 42,22 40,14 C39,10 38,6 36,4 Z"/></svg>
       <span class="brand-word">mahindra</span>
     </div>
     <h1 class="hero-title">Scorpio-N Rhino Edition &mdash; Dealer Survey</h1>
-    <p class="hero-subtitle">Help us shape the Rhino Edition. Takes about a minute.</p>
+    <p class="hero-org">Mahindra South Africa</p>
+    <p class="hero-subtitle">Thank you for taking part. Your feedback helps us finalise accessory bundling and pricing for the Rhino Edition.</p>
+
+    <div class="datetime-pill" id="datetime-pill"></div>
+
+    <div class="stat-row">
+      <div class="stat-item"><span class="stat-label">Duration</span><span class="stat-value">2&ndash;3 minutes</span></div>
+      <div class="stat-item"><span class="stat-label">Questions</span><span class="stat-value">6 questions</span></div>
+      <div class="stat-item"><span class="stat-label">Valid for</span><span class="stat-value">Limited time</span></div>
+    </div>
+
+    <div class="privacy-panel">
+      <p class="privacy-title">Privacy Notice (POPIA Compliance)</p>
+      <p class="privacy-intro">In accordance with the <strong>Protection of Personal Information Act (POPIA)</strong>, we are committed to protecting your personal information and your right to privacy.</p>
+      <p class="privacy-heading">What we collect:</p>
+      <ul>
+        <li>Your name, designation and dealership</li>
+        <li>Your accessory preferences and survey responses</li>
+        <li>Date and time the survey was completed</li>
+      </ul>
+      <p class="privacy-heading">How we use your information:</p>
+      <ul>
+        <li>To plan Scorpio-N Rhino Edition accessory bundling and pricing</li>
+        <li>To follow up with your dealership regarding stock</li>
+        <li>To improve our vehicles, products and services</li>
+      </ul>
+    </div>
+
     <button type="button" class="btn btn-primary btn-block" id="start-btn">Start Survey</button>
   </section>
 
@@ -48,15 +75,16 @@
 
     <section class="screen card" id="screen-1" data-step-screen="1" hidden>
       <h2>Survey Questions</h2>
+      <p class="step-subtitle">Tell us a bit about you and your dealership.</p>
       <hr>
 
       <div class="field">
-        <label for="fullName" class="required">First Name and Surname</label>
+        <label for="fullName">First Name and Surname</label>
         <input type="text" id="fullName" name="fullName" required autocomplete="name" placeholder="Enter your first name and surname">
       </div>
 
       <div class="field">
-        <label for="designation" class="required">What is your designation?</label>
+        <label for="designation">What is your designation?</label>
         <select id="designation" name="designation" required>
           <option value="" disabled selected>Select your designation</option>
           <option>Franchise Director</option>
@@ -71,19 +99,19 @@
       </div>
 
       <div class="field" id="otherDesignationField" hidden>
-        <label for="otherDesignation" class="required">Please specify your designation</label>
+        <label for="otherDesignation">Please specify your designation</label>
         <input type="text" id="otherDesignation" name="otherDesignation" placeholder="Your designation">
       </div>
 
       <div class="field">
-        <label for="province" class="required">Which dealership are you from? &mdash; Province</label>
+        <label for="province">Which dealership are you from? &mdash; Province</label>
         <select id="province" name="province" required>
           <option value="" disabled selected>Select your province</option>
         </select>
       </div>
 
       <div class="field">
-        <label for="dealership" class="required">Dealership</label>
+        <label for="dealership">Dealership</label>
         <select id="dealership" name="dealership" required disabled>
           <option value="" disabled selected>Select a province first</option>
         </select>
@@ -99,10 +127,11 @@
 
     <section class="screen card" id="screen-2" data-step-screen="2" hidden>
       <h2>Accessories &amp; Feedback</h2>
+      <p class="step-subtitle">Select any accessories you'd like fitted, then share your feedback.</p>
       <hr>
 
       <div class="field">
-        <label class="required">4. Please select from the accessory list below what you would like to have fitted on the Scorpio-N Rhino Edition</label>
+        <label>4. Please select from the accessory list below what you would like to have fitted on the Scorpio-N Rhino Edition</label>
         <p class="field-hint">Prices shown are excluding VAT.</p>
 
         <div class="table-wrap">
@@ -131,7 +160,7 @@
       <hr>
 
       <div class="field">
-        <label class="required">5. On a scale of 1 to 10, how strongly would you consider adding the Scorpio-N Rhino to your dealership stock?</label>
+        <label>5. On a scale of 1 to 10, how strongly would you consider adding the Scorpio-N Rhino to your dealership stock?</label>
         <div class="scale-group" role="radiogroup" aria-required="true" id="scale-group"></div>
       </div>
 
@@ -150,6 +179,8 @@
       </div>
     </section>
   </form>
+
+  <p class="step-footnote" id="step-footnote" hidden>Survey link valid for a limited time &middot; Your responses are protected under POPIA</p>
 
   <section class="screen card card--hero" id="screen-done" hidden role="status">
     <h2 class="hero-title">Thank you!</h2>

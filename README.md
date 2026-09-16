@@ -71,14 +71,27 @@ dealer actually checks.
 
 ## CI notes
 
-Styling follows the "Mahindra Survey CI" spec supplied for this project:
-brand red `#e31837` (buttons, header, stepper, mandatory-field labels,
-checked checkboxes), `#1a1a1a` ink text, `gray-100` page background, white
-cards, Manrope typeface, and the documented component patterns (rounded-2xl
+Styling and screen structure follow real screenshots of an existing Mahindra
+South Africa survey (a Festival of Motoring test-drive feedback form) that
+were supplied as the ground-truth reference, superseding an earlier written
+spec on a couple of points — notably, field labels are **not** red for
+required fields (that was wrong in the earlier spec); red is reserved for
+actual validation errors.
+
+Matched from the reference: brand red `#e31837`, `#1a1a1a` ink text,
+`gray-100` page background, white cards, Manrope typeface, rounded-2xl
 cards, rounded-xl buttons, ring+scale on selected toggle buttons, black top
 strip, `color-scheme: light` forced to prevent Android auto-dark-mode
-inversion). The 1–10 stock-consideration question reuses the same
-selected/unselected toggle-button treatment as a 5-column, 2-row grid.
+inversion, a richer welcome screen (org sub-line, live date/time pill, a
+Duration/Questions/Valid-for stat row, a POPIA privacy notice panel), a
+subtitle line under each step heading, and a small "link valid / POPIA"
+note under the card on step screens. The 1–10 stock-consideration question
+reuses the toggle-button treatment as a 5-column, 2-row grid.
+
+**The POPIA privacy notice wording is placeholder copy** written to match
+the reference's tone and structure (what's collected / how it's used) for
+this survey's actual content — it is not legally reviewed. Have your
+compliance/legal team check it before this goes live, same as the logo.
 
 ## Survey flow (per scope)
 
