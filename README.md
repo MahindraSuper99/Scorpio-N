@@ -19,13 +19,12 @@ Feedback) → Thank you**, with a progress stepper shown on steps 1–2.
 
 ## Before going live
 
-1. **Dealer list** — replace the placeholder entries in `dealers.json` with
-   the current full dealer list, grouped by province:
-   ```json
-   { "Gauteng": ["Dealer One", "Dealer Two"], "Western Cape": ["Dealer Three"] }
-   ```
-   The province dropdown is generated from this file's keys, so add/remove
-   provinces there too if needed.
+1. **Dealer list — done.** `dealers.json` holds the full 104-dealer list from
+   the supplied store-locator spreadsheet, grouped by its own "Province"
+   column (9 SA provinces plus Botswana, Namibia, Swaziland, Zimbabwe, and a
+   "SADC" group for a couple of entries filed that way in the source data).
+   The province dropdown is generated from this file's keys, so re-run the
+   same grouping if the source list is updated.
 2. **Accessory prices** — the 12 accessories and their ex-VAT prices are
    defined in the `ACCESSORIES` array at the top of `script.js`. Update
    prices there if they change; the per-item table, the "full set" reference

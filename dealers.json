@@ -1,11 +1,134 @@
 {
-  "Eastern Cape": ["REPLACE ME - Dealer 1", "REPLACE ME - Dealer 2"],
-  "Free State": ["REPLACE ME - Dealer 1"],
-  "Gauteng": ["REPLACE ME - Dealer 1", "REPLACE ME - Dealer 2"],
-  "KwaZulu-Natal": ["REPLACE ME - Dealer 1", "REPLACE ME - Dealer 2"],
-  "Limpopo": ["REPLACE ME - Dealer 1"],
-  "Mpumalanga": ["REPLACE ME - Dealer 1"],
-  "North West": ["REPLACE ME - Dealer 1"],
-  "Northern Cape": ["REPLACE ME - Dealer 1"],
-  "Western Cape": ["REPLACE ME - Dealer 1", "REPLACE ME - Dealer 2"]
+  "Botswana": [
+    "Mahindra Botswana"
+  ],
+  "Eastern Cape": [
+    "Mahindra Burgersdorp",
+    "Mahindra Cradock",
+    "Mahindra East London",
+    "Mahindra Graaff Reinet",
+    "Mahindra Humansdorp",
+    "Mahindra King Williams Town",
+    "Mahindra Mthatha",
+    "Mahindra Port Elizabeth",
+    "Mahindra Queenstown"
+  ],
+  "Free State": [
+    "Mahindra Bethlehem",
+    "Mahindra Bloemfontein",
+    "Mahindra Welkom",
+    "Mahindra Welkom Service Center"
+  ],
+  "Gauteng": [
+    "Mahindra Alberton",
+    "Mahindra Benoni",
+    "Mahindra Benoni Service center",
+    "Mahindra Bryanston",
+    "Mahindra Centurion",
+    "Mahindra Clearwater",
+    "Mahindra Eagle",
+    "Mahindra East Rand",
+    "Mahindra Edenvale",
+    "Mahindra Fourways",
+    "Mahindra Germiston",
+    "Mahindra Glen",
+    "Mahindra Hatfield",
+    "Mahindra Heidelberg",
+    "Mahindra JHB South",
+    "Mahindra Kempton Park",
+    "Mahindra Lenasia",
+    "Mahindra Mahikeng",
+    "Mahindra Menlyn",
+    "Mahindra Midrand",
+    "Mahindra Montana",
+    "Mahindra PTA North",
+    "Mahindra Randburg/NorthCliff",
+    "Mahindra Randfontein",
+    "Mahindra Rivonia",
+    "Mahindra Silverlakes",
+    "Mahindra Silverton",
+    "Mahindra Springs (New)",
+    "Mahindra Vaal",
+    "Mahindra Vereeniging",
+    "Mahindra Westrand",
+    "Mahindra Woodmead"
+  ],
+  "KwaZulu Natal": [
+    "Mahindra Amanzimtoti",
+    "Mahindra Ballito",
+    "Mahindra Durban",
+    "Mahindra Empangeni",
+    "Mahindra Kokstad",
+    "Mahindra Ladysmith",
+    "Mahindra Newcastle",
+    "Mahindra PMB",
+    "Mahindra Pinetown",
+    "Mahindra South Coast",
+    "Mahindra Umhlanga",
+    "Mahindra Vryheid",
+    "Mahindra Warden"
+  ],
+  "Limpopo": [
+    "Mahindra Bela Bela",
+    "Mahindra Groblersdal",
+    "Mahindra Lephalale",
+    "Mahindra Louis Trichardt",
+    "Mahindra Maruleng",
+    "Mahindra Mokopane",
+    "Mahindra Piet Retief",
+    "Mahindra Polokwane",
+    "Mahindra Tzaneen"
+  ],
+  "Mpumalanga": [
+    "Mahindra Bethal",
+    "Mahindra Bronkhorstspruit",
+    "Mahindra Lydenburg",
+    "Mahindra Middelburg",
+    "Mahindra Nelspruit",
+    "Mahindra Witbank"
+  ],
+  "Namibia": [
+    "Mahindra Windhoek"
+  ],
+  "North West": [
+    "Mahindra Brits",
+    "Mahindra Klerksdorp",
+    "Mahindra Potchefstroom",
+    "Mahindra Rustenburg",
+    "Mahindra Thabazimbi",
+    "Mahindra Vryburg"
+  ],
+  "Northern Cape": [
+    "Mahindra Kathu",
+    "Mahindra Kimberley",
+    "Mahindra Springbok",
+    "Mahindra Upington"
+  ],
+  "SADC": [
+    "Mahindra Zambia",
+    "Mahindra Zimbabwe Croco"
+  ],
+  "Swaziland": [
+    "Mahindra Swaziland"
+  ],
+  "Western Cape": [
+    "Mahindra Caledon",
+    "Mahindra Cape Metro",
+    "Mahindra George",
+    "Mahindra Goodwood",
+    "Mahindra Hermanus",
+    "Mahindra Knysna",
+    "Mahindra Kuilsrivier",
+    "Mahindra Malmesbury",
+    "Mahindra Milnerton",
+    "Mahindra Paarl",
+    "Mahindra Somerset West",
+    "Mahindra Tokai",
+    "Mahindra Tygervalley",
+    "Mahindra Vredenburg",
+    "Mahindra Worcester"
+  ],
+  "Zimbabwe": [
+    "Mahindra Zimbabwe"
+  ]
 }
