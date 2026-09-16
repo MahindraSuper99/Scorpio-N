@@ -78,6 +78,7 @@ function goToStep(target) {
   form.hidden = target === "welcome" || target === "done";
   stepChrome.hidden = target === "welcome" || target === "done";
   stepFootnote.hidden = target === "welcome" || target === "done";
+  document.body.classList.toggle("center-content", target === "done");
 
   for (let i = 1; i <= TOTAL_STEPS; i++) {
     screens[i].hidden = target !== i;
