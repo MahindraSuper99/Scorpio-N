@@ -29,10 +29,15 @@ Feedback) → Thank you**, with a progress stepper shown on steps 1–2.
    defined in the `ACCESSORIES` array at the top of `script.js`. Update
    prices there if they change; the per-item table, the "full set" reference
    total, and the live selection subtotal all derive from that one array.
-3. **Logo asset** — the header/hero currently use a hand-drawn approximation
-   of the "twin-wing" mark (inline SVG in `index.html`, `.brand-icon`/
-   `.brand-word`) since no logo file was supplied. Swap it for the real
-   Mahindra PNG/SVG mark when available.
+3. **Logo asset** — the header/hero use a hand-drawn SVG approximation of the
+   "twin-wing" mark (`.brand-icon` in `index.html`, 4 faceted `<path>`
+   elements styled in `styles.css` under `.facet-light`/`.facet-dark`) built
+   by eye from a reference image, since attempts to upload the real logo file
+   didn't attach (only arrived as inline content, no file this session could
+   read from disk). It's a reasonable stand-in, not a trace of the real
+   asset — swap in the actual Mahindra PNG/SVG file by replacing the `<svg
+   class="brand-icon">` block in both places in `index.html` with an `<img>`
+   tag once the file can be uploaded.
 4. **Response collection** — by default, submitted answers are only saved to
    the visitor's own browser (`localStorage`, for testing). To actually
    collect responses, set `SUBMIT_ENDPOINT` at the top of `script.js` to a

@@ -58,18 +58,21 @@ button, a, input, textarea, select {
   align-items: flex-start;
   color: #fff;
 }
-.brand-lockup--header .brand-icon { width: 26px; height: 16px; }
+.brand-lockup--header .brand-icon { width: 40px; height: 26px; }
 .brand-lockup--header .brand-word { font-size: 11px; }
+.brand-lockup--header .facet { fill: currentColor; }
 
 .brand-lockup--hero {
   align-items: center;
   color: var(--muted);
   margin-bottom: 12px;
 }
-.brand-lockup--hero .brand-icon { width: 44px; height: 28px; }
+.brand-lockup--hero .brand-icon { width: 68px; height: 44px; }
 .brand-lockup--hero .brand-word { font-size: 15px; }
 
-.brand-icon { fill: currentColor; }
+.facet-light { fill: #c9c2b8; }
+.facet-dark { fill: #7a7267; }
+
 .brand-word {
   font-weight: 600;
   letter-spacing: 0.02em;
