@@ -324,6 +324,14 @@ input:focus, select:focus, textarea:focus {
 }
 .grand-total-line strong { font-size: 15px; }
 
+.vehicle-hero {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+
 .vehicle-name {
   margin: 0 0 10px;
   font-weight: 700;
