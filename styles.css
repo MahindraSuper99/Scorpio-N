@@ -316,6 +316,39 @@ input:focus, select:focus, textarea:focus {
   color: var(--ink);
 }
 .selection-summary strong { color: var(--brand-red-hover); }
+.grand-total-line {
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid var(--brand-red);
+  font-weight: 700;
+}
+.grand-total-line strong { font-size: 15px; }
+
+.vehicle-name {
+  margin: 0 0 10px;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink);
+}
+.vehicle-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+  margin-bottom: 12px;
+}
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.spec-label { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted); }
+.spec-value { font-size: 13px; font-weight: 600; color: var(--ink); }
+.vehicle-price {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink);
+}
+.vehicle-price strong { color: var(--brand-red-hover); }
 
 .scale-group {
   display: grid;
