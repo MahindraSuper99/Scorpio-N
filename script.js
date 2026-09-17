@@ -1,7 +1,7 @@
 // Configure this before going live: a webhook/endpoint that accepts a JSON POST
 // of the survey answers (e.g. a Google Apps Script Web App URL, or your own API).
 // Leave blank to keep responses local-only (useful for testing).
-const SUBMIT_ENDPOINT = "";
+const SUBMIT_ENDPOINT = "https://connect.pabbly.com/webhook-listener/webhook/IjU3NmQwNTZhMDYzMDA0MzQ1MjZiIg_3D_3D_pc/IjU3NjcwNTY4MDYzMzA0MzI1MjZjNTUzNjUxMzYi_pc";
 
 const VAT_RATE = 0.15;
 
