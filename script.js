@@ -256,6 +256,7 @@ form.addEventListener("submit", async (event) => {
     vehicle: VEHICLE.name,
     vehiclePriceInclVat: VEHICLE.priceInclVat,
     selectedAccessories,
+    accessoryCount: selectedAccessories.length,
     accessorySubtotalExclVat: accessorySubtotal,
     accessoryTotalInclVat: Math.round(accessorySubtotal * (1 + VAT_RATE)),
     grandTotalInclVat: Math.round(VEHICLE.priceInclVat + accessorySubtotal * (1 + VAT_RATE)),
