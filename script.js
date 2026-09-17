@@ -5,6 +5,11 @@ const SUBMIT_ENDPOINT = "";
 
 const VAT_RATE = 0.15;
 
+const VEHICLE = {
+  name: "Scorpio-N Z8L 2.2D 6AT 4x4",
+  priceInclVat: 629899,
+};
+
 const ACCESSORIES = [
   { id: "roofRack", name: "Heavy-Duty Roof Rack", price: 13000 },
   { id: "towbar", name: "Towbar", price: 6900 },
@@ -170,9 +175,16 @@ function renderAccessoryTable() {
 function updateSelectionSummary() {
   const checked = document.querySelectorAll('#accessory-rows input[type="checkbox"]:checked');
   const subtotal = Array.from(checked).reduce((sum, el) => sum + Number(el.dataset.price), 0);
+  const accessoryTotalInclVat = subtotal * (1 + VAT_RATE);
   document.getElementById("selection-count").textContent = String(checked.length);
   document.getElementById("selection-subtotal").textContent = formatRand(subtotal);
-  document.getElementById("selection-total-vat").textContent = formatRand(subtotal * (1 + VAT_RATE));
+  document.getElementById("selection-total-vat").textContent = formatRand(accessoryTotalInclVat);
+  document.getElementById("grand-total").textContent = formatRand(VEHICLE.priceInclVat + accessoryTotalInclVat);
+}
+
+function renderVehicle() {
+  document.getElementById("vehicle-price").textContent = formatRand(VEHICLE.priceInclVat);
+  document.getElementById("vehicle-price-line").textContent = formatRand(VEHICLE.priceInclVat);
 }
 
 function renderScaleGroup() {
@@ -187,6 +199,7 @@ function renderScaleGroup() {
   }
 }
 
+renderVehicle();
 renderAccessoryTable();
 renderScaleGroup();
 
@@ -240,9 +253,12 @@ form.addEventListener("submit", async (event) => {
     otherDesignation: formData.get("otherDesignation") || "",
     province: formData.get("province"),
     dealership: formData.get("dealership"),
+    vehicle: VEHICLE.name,
+    vehiclePriceInclVat: VEHICLE.priceInclVat,
     selectedAccessories,
     accessorySubtotalExclVat: accessorySubtotal,
     accessoryTotalInclVat: Math.round(accessorySubtotal * (1 + VAT_RATE)),
+    grandTotalInclVat: Math.round(VEHICLE.priceInclVat + accessorySubtotal * (1 + VAT_RATE)),
     stockConsideration: formData.get("stockConsideration"),
     comments: formData.get("comments") || "",
     submittedAt: new Date().toISOString(),
